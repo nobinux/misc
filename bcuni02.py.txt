@@ -1,0 +1,51 @@
+1. 任意のデータ(D)に下記のハッシュ関数をそれぞれ掛ける。
+sha1(D), sha256(D), sha512(D), sha256(sha256(D)), ripemd160(D), ripemd160(sha256(D))
+
+2. 任意のデータ(D)をbase58checkでエンコーディングする。
+デコードも行って、チェックサムが一致していることも確認する。
+
+3. ECDSAのsecp256k1曲線を用いて秘密鍵を生成し、そこから公開鍵を算出する。
+
+4. 3番の秘密鍵を用いて任意のデータ(D)を署名し、公開鍵で署名を検証する
+
+
+
+>>> import hashlib
+>>> print(hashlib.algorithms_available)
+{'ripemd160', 'MD5', 'sha1', 'dsaWithSHA', 'RIPEMD160', 'sha', 'blake2b', 'sha3_512', 'SHA224', 'sha256', 'SHA', 'sha3_384', 'sha3_224', 'md4', 'ecdsa-with-SHA1', 'sha384', 'MD4', 'SHA1', 'whirlpool', 'blake2s', 'sha224', 'shake_256', 'dsaEncryption', 'SHA512', 'SHA384', 'shake_128', 'sha3_256', 'DSA', 'DSA-SHA', 'md5', 'sha512', 'SHA256'}
+
+
+
+
+bcuni_02.py
+
+# BlockChain University #2 ビットコインにおける暗号学～ハッシュ関数と楕円曲線～
+
+## homework
+
+# 1. 任意のデータ(D)に下記のハッシュ関数をそれぞれ掛ける。
+# sha1(D), sha256(D), sha512(D), sha256(sha256(D)), ripemd160(D), ripemd160(sha256(D))
+#
+# 2. 任意のデータ(D)をbase58checkでエンコーディングする。
+# デコードも行って、チェックサムが一致していることも確認する。
+#
+# 3. ECDSAのsecp256k1曲線を用いて秘密鍵を生成し、そこから公開鍵を算出する。
+#
+# 4. 3番の秘密鍵を用いて任意のデータ(D)を署名し、公開鍵で署名を検証する
+
+import hashlib
+
+
+
+データ： "example data to be hashed"
+
+
+
+Data D : example data to be hashed
+sha1(D) : c9e38c7dd778cdeffcdff7188c1a4c4d3c767e3b
+sha256(D) : aa2356b0d9098e8fc3cdfe63a07a83c85533d06ea6270abf50e5ef7dc60620f9
+sha512(D) : 760e5df6338ca1a3218fb9f7e5a2e9d20984c3c707f918feb1231c8715636100ff2d484972db370e46b4f8eaaf3294a95191ad6e9f7ebef2d4ffb5c7bef3a13a
+sha256(sha256(D)) : 08dbfcea88a9fc1b9a91ca40de59bb0f30e99285ff4f4019f6b4c9509043b00b
+ripemd160(D) : 64988b52845db1905cbf2530a9f60c666c8836f2
+sha256ripemd160 : bdfad4ef4a0345da136f1a7954bf6faa50ede3d722d6a69ada181d17434b587c
+ripemd160(sha256(D)) : 340c28edb22d05de0730899cb31bf8943dc1f456
