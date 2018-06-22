@@ -1,0 +1,6 @@
+Host githubproxy
+  User git
+  Hostname ssh.github.com
+  Port 443
+  IdentityFile "c:\data\key\ssh\OpenSSH_github\id_rsa"
+  ProxyCommand connect.exe -H localhost:53128 %h %p

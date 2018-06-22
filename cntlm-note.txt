@@ -1,0 +1,49 @@
+
+　● 必ず編集する場所
+　　Username,Domain,Password の覧に然るべき事項
+　　Proxy に、NTLM認証を要求しているサーバーのアドレスとポート
+　● たぶん、とりあえずデフォルトでも動く場所
+　　NoProxy に、直接接続する接続先のアドレス
+　　Listen の覧に、CNTLMに接続するPCのアドレスとポート
+　　
+　　
+　　ssh://git@ssh.github.com:443/nobinuxlab/BlockChainBasic.git
+　　
+　　
+　　ssh -T git@githubproxy
+　　
+　　ssh://git@githubproxy:443/nobinuxlab/BlockChainBasic.git
+　　
+　　git@githubproxy:nobinuxlab/BlockChainBasic.git
+　　
+　　https://github.com/nobinuxlab/BlockChainBasic.git
+　　
+　　
+　　[ini note]
+　Usernameを自分のアカウントIDに変更
+Domainを自分の参加ドメインに変更
+PasswordはコメントアウトでOK
+PassLM、PassNT、PassNTLMv2をコマンドcntlm -Hで出てくる内容に変更。
+Proxyを普段使っているプロキシサーバのIPに変更。
+Listenをいい感じのポート（競合しないやつ）に変更。今回は3128にした。
+
+　　
+(6) 動作状況の確認
+　Cntlm Authentication Proxyのサービスを停止して、コマンドプロンプトから以下のコマンドで動作状況を確認。ちなみに、プロンプトを閉じるとcntlmも終了する。
+　cd “C:\Program Files (x86)\Cntlm”
+　→ cntlm -c cntlm.ini -v
+　
+　
+　
+　http://yonyon-blog.net/youmei/2014/06/27/cntlmの導入とトラブルシューティング/
+　
+　
+　
+　https://qiita.com/flat-8-kiki/items/240fe19b02be8e6dd30d
+　https://opcdiary.net/?p=30377
+　
+　
+　
+　ssh: git
+　http://tadasy.hateblo.jp/entry/2013/09/27/204432
+　
